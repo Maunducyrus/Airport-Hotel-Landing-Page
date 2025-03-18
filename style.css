@@ -100,6 +100,53 @@ body {
     object-fit: cover;
   }
   
+  /* Menu Section */
+  .menu {
+    padding: 50px 20px;
+    background: #f4f4f4;
+    text-align: center;
+  }
+  
+  .menu-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .menu-item {
+    width: 300px;
+    margin: 20px;
+  }
+  
+  .menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Events Section */
+  .events {
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .event-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .event-item {
+    width: 300px;
+    margin: 20px;
+  }
+  
+  .event-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
   /* Testimonials Section */
   .testimonials {
     padding: 50px 20px;
