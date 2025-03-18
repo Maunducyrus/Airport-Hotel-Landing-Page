@@ -1,83 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skyline Airport Hotel</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Hotel</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="logo">Skyline Hotel</a>
-      <button class="menu-toggle" id="menu-toggle">☰</button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#chefs">Chefs</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#book" class="btn book-btn">Reserve a Table</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Airport Hotel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#rooms">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amenities">Amenities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chefs">Chefs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Skyline Airport Hotel</h1>
-      <p>Your comfort is our priority</p>
-      <a href="#rooms" class="btn">Book Now</a>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Welcome to Airport Hotel</h1>
+            <p>Your comfort is our priority</p>
+            <a href="#rooms" class="btn btn-warning">Book Now</a>
+        </div>
+    </header>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>Located just minutes from the airport, Skyline Hotel offers luxury and convenience for travelers. Enjoy our world-class amenities and exceptional service.</p>
-  </section>
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Our Rooms</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="room1.jpg" class="card-img-top" alt="Deluxe Room">
+                        <div class="card-body">
+                            <h5 class="card-title">Deluxe Room</h5>
+                            <p class="card-text">Spacious and luxurious with all modern amenities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="room2.jpg" class="card-img-top" alt="Suite Room">
+                        <div class="card-body">
+                            <h5 class="card-title">Suite Room</h5>
+                            <p class="card-text">Exclusive suite with a breathtaking view.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="room3.jpg" class="card-img-top" alt="Standard Room">
+                        <div class="card-body">
+                            <h5 class="card-title">Standard Room</h5>
+                            <p class="card-text">Comfortable and affordable with great services.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Menu Section -->
-  <section id="menu" class="menu">
-    <h2>Our Menu</h2>
-    <div class="menu-list">
-      <div class="menu-item"><img src="images/breakfast.jpg" alt="Breakfast"><h3>Breakfast</h3></div>
-      <div class="menu-item"><img src="images/lunch.jpg" alt="Lunch"><h3>Lunch</h3></div>
-      <div class="menu-item"><img src="images/dinner.jpg" alt="Dinner"><h3>Dinner</h3></div>
-    </div>
-  </section>
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Hotel Amenities</h2>
+            <ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">Free Wi-Fi</li>
+                <li class="list-group-item">24/7 Room Service</li>
+                <li class="list-group-item">Airport Shuttle</li>
+                <li class="list-group-item">Swimming Pool</li>
+                <li class="list-group-item">Gym & Spa</li>
+            </ul>
+        </div>
+    </section>
 
-  <!-- Events Section -->
-  <section id="events" class="events">
-    <h2>Upcoming Events</h2>
-    <div class="event-list">
-      <div class="event-item"><img src="images/event1.jpg" alt="Event 1"><h3>Wedding Parties</h3></div>
-      <div class="event-item"><img src="images/event2.jpg" alt="Event 2"><h3>Wine Tasting</h3></div>
-    </div>
-  </section>
+    <!-- Chefs Section -->
+    <section id="chefs" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Our Chefs</h2>
+            <p class="text-center">Meet our world-class chefs who create delicious culinary experiences.</p>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <!-- Events Section -->
+    <section id="events" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Events</h2>
+            <p class="text-center">Join us for exclusive events and celebrations.</p>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Skyline Airport Hotel. All rights reserved.</p>
-  </footer>
+    <!-- About Us Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center">About Us</h2>
+            <p class="text-center">Learn more about our hotel and what makes us special.</p>
+        </div>
+    </section>
 
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('nav-links').classList.toggle('active');
-    });
-  </script>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Gallery</h2>
+            <p class="text-center">Take a glimpse of our luxurious hotel and its beautiful surroundings.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center">Contact Us</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
