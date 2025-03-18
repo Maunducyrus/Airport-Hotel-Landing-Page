@@ -7,6 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">Skyline Hotel</a>
+      <button class="menu-toggle" id="menu-toggle">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#chefs">Chefs</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#book" class="btn book-btn">Reserve a Table</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -16,113 +33,33 @@
     </div>
   </section>
 
-  <!-- About Us Section -->
-  <section class="about">
+  <!-- About Section -->
+  <section id="about" class="about">
     <h2>About Us</h2>
     <p>Located just minutes from the airport, Skyline Hotel offers luxury and convenience for travelers. Enjoy our world-class amenities and exceptional service.</p>
   </section>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>Our Services</h2>
-    <div class="service-list">
-      <div class="service-item">
-        <img src="images/shuttle service.jpg" alt="Shuttle Service">
-        <h3>Free Shuttle Service</h3>
-      </div>
-      <div class="service-item">
-        <img src="images/room service.jpg" alt="Room Service">
-        <h3>24/7 Room Service</h3>
-      </div>
-      <div class="service-item">
-        <img src="images/free wifi.jpg" alt="Wi-Fi">
-        <h3>Free Wi-Fi</h3>
-      </div>
-      <div class="service-item">
-        <img src="images/gym.jpg" alt="Spa & Gym">
-        <h3>Spa & Gym</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rooms Section -->
-  <section class="rooms" id="rooms">
-    <h2>Our Rooms</h2>
-    <div class="room-list">
-      <div class="room-item">
-        <img src="images/room 1.jpg" alt="Standard Room">
-        <h3>Standard Room</h3>
-        <p>$100/night</p>
-      </div>
-      <div class="room-item">
-        <img src="images/room 2.jpg" alt="Deluxe Room">
-        <h3>Deluxe Room</h3>
-        <p>$150/night</p>
-      </div>
-      <div class="room-item">
-        <img src="images/room 3.jpg" alt="Suite">
-        <h3>Suite</h3>
-        <p>$250/night</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Menu Section -->
-  <section class="menu">
+  <section id="menu" class="menu">
     <h2>Our Menu</h2>
     <div class="menu-list">
-      <div class="menu-item">
-        <img src="images/breakfast.jpg" alt="Breakfast">
-        <h3>Breakfast</h3>
-        <p>Start your day with our delicious breakfast buffet.</p>
-      </div>
-      <div class="menu-item">
-        <img src="images/lunch.jpg" alt="Lunch">
-        <h3>Lunch</h3>
-        <p>Enjoy a variety of international cuisines for lunch.</p>
-      </div>
-      <div class="menu-item">
-        <img src="images/dinner1.jpg" alt="Dinner">
-        <h3>Dinner</h3>
-        <p>Experience fine dining with our gourmet dinner options.</p>
-      </div>
+      <div class="menu-item"><img src="images/breakfast.jpg" alt="Breakfast"><h3>Breakfast</h3></div>
+      <div class="menu-item"><img src="images/lunch.jpg" alt="Lunch"><h3>Lunch</h3></div>
+      <div class="menu-item"><img src="images/dinner.jpg" alt="Dinner"><h3>Dinner</h3></div>
     </div>
   </section>
 
   <!-- Events Section -->
-  <section class="events">
+  <section id="events" class="events">
     <h2>Upcoming Events</h2>
     <div class="event-list">
-      <div class="event-item">
-        <img src="images/event1.jpg" alt="Event 1">
-        <h3>Wedding Parties</h3>
-        <p>Host your wedding with us and have the best experience, treat your loved one us a queen</p>
-      </div>
-      <div class="event-item">
-        <img src="images/event2.jpg" alt="Event 2">
-        <h3>Wine Tasting</h3>
-        <p>Discover the finest wines from around the world.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <h2>What Our Guests Say</h2>
-    <div class="testimonial-list">
-      <div class="testimonial-item">
-        <p>"Amazing service and comfortable rooms!"</p>
-        <p>⭐⭐⭐⭐⭐</p>
-      </div>
-      <div class="testimonial-item">
-        <p>"The best hotel near the airport. Highly recommended!"</p>
-        <p>⭐⭐⭐⭐⭐</p>
-      </div>
+      <div class="event-item"><img src="images/event1.jpg" alt="Event 1"><h3>Wedding Parties</h3></div>
+      <div class="event-item"><img src="images/event2.jpg" alt="Event 2"><h3>Wine Tasting</h3></div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <form>
       <input type="text" placeholder="Your Name" required>
@@ -135,11 +72,12 @@
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Skyline Airport Hotel. All rights reserved.</p>
-    <div class="social-links">
-      <a href="#">Facebook</a>
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-    </div>
   </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('nav-links').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
