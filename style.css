@@ -1,184 +1,86 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Navbar Styles */
-  .navbar {
-    background-color: #1a252f;
-    padding: 15px 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    font-size: 22px;
-  }
-  
-  .navbar .logo {
-    color: white;
-    font-size: 30px;
+    color: #333;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #004d40 !important; /* Teal color for a luxurious look */
+}
+.navbar-nav .nav-link {
+    color: white !important;
     font-weight: bold;
-    text-decoration: none;
-    margin-left: 20px;
-    margin-right: auto;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .nav-links li {
-    margin-left: 25px;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 22px;
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: #f1c40f;
-  }
-  
-  .book-btn {
-    background-color: #f1c40f;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: black;
-  }
-  
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-  }
-  
-  /* Hero Section */
-  .hero {
+}
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important; /* Highlight on hover */
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('images/hotel-bg.jpg') no-repeat center center/cover;
     height: 100vh;
-    background: url('images/hero.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-  }
-  
-  .hero h1 {
-    font-size: 50px;
-  }
-  
-  .hero p {
-    font-size: 24px;
-  }
-  
-  .hero .btn {
-    background-color: #f1c40f;
-    padding: 12px 25px;
-    border-radius: 5px;
-    color: black;
-    text-decoration: none;
-  }
-  
-  /* Sections */
-  section {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: white;
-    margin: 20px 0;
-  }
-  
-  h2 {
-    font-size: 38px;
-    color: #2c3e50;
-  }
-  
-  /* Additional Sections */
-  .rooms, .services, .dining, .spa, .gallery, .contact, .testimonials, .about {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: white;
-    margin: 20px 0;
-  }
-  
-  .rooms .room-list, .services .service-list, .dining .dining-list, .spa .spa-list, .gallery .gallery-list, .testimonials .testimonial-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .room-item, .service-item, .dining-item, .spa-item, .gallery-item, .testimonial-item {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-  }
-  
-  .room-item img, .service-item img, .dining-item img, .spa-item img, .gallery-item img, .testimonial-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px; /* Rounded corners */
-    max-height: 200px;
-    object-fit: cover;
-  }
-  
-  /* Ensure images are responsive and not too large */
-  img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    object-fit: cover;
-  }
-  
-  /* Contact Section */
-  .contact form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-    margin: auto;
-  }
-  
-  .contact input, .contact textarea {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .contact button {
-    background-color: #2c3e50;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
     color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #2c3e50;
+}
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+.hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.hero-section p {
+    font-size: 1.5rem;
+}
+.hero-section .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+
+/* Section Styling */
+.page-section {
+    padding: 60px 0;
+}
+.page-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Rooms Section */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
     color: white;
     text-align: center;
-    padding: 12px 0;
-  }
-  
+    padding: 20px 0;
+    margin-top: 50px;
+}
