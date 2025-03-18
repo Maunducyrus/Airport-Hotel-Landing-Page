@@ -14,23 +14,25 @@ body {
   
   /* Navbar Styles */
   .navbar {
-    background-color: #2c3e50;
+    background-color: #1a252f;
     padding: 15px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    font-size: 20px;
   }
   
   .navbar .logo {
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     text-decoration: none;
-    order: 2;
+    margin-right: auto;
+    padding-left: 20px;
   }
   
   .nav-links {
@@ -38,17 +40,16 @@ body {
     display: flex;
     padding: 0;
     margin: 0;
-    order: 1;
   }
   
   .nav-links li {
-    margin-left: 20px;
+    margin-left: 25px;
   }
   
   .nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     transition: color 0.3s;
   }
   
@@ -111,22 +112,29 @@ body {
     color: #2c3e50;
   }
   
-  /* Menu, Events, Chefs, Gallery, Contact Sections */
-  .menu-list, .event-list, .chef-list, .gallery-list {
+  /* Additional Sections */
+  .rooms, .services, .testimonials, .about {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: white;
+    margin: 20px 0;
+  }
+  
+  .rooms .room-list, .services .service-list, .testimonials .testimonial-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
   }
   
-  .menu-item, .event-item, .chef-item, .gallery-item {
+  .room-item, .service-item, .testimonial-item {
     background-color: #ffffff;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .menu-item img, .event-item img, .chef-item img, .gallery-item img {
+  .room-item img, .service-item img, .testimonial-item img {
     width: 100%;
     height: auto;
     border-radius: 5px;
