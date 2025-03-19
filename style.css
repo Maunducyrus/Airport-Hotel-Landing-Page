@@ -18,6 +18,9 @@ body {
 .navbar-nav .nav-link {
     color: white !important;
     font-weight: bold;
+    font-size: 18px; /* Increase font size for menu items */
+    transition: 0.3s;
+    padding: 10px 15px; /* Adds spacing for better clicking */
 }
 .navbar-nav .nav-link:hover {
     color: #ffcc00 !important; /* Highlight on hover */
