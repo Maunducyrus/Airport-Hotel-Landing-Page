@@ -69,27 +69,37 @@ body {
     padding: 60px 0;
 }
 
-/* Floating Effect for the About Section */
+/* Ensure Both Columns Have Equal Height */
+#about .row {
+    display: flex;
+    align-items: stretch; /* Stretch columns to equal height */
+}
+
+/* Floating Effect for About Content */
 .about-content {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers text */
 }
 
 /* Lift on hover for floating effect */
 .about-content:hover {
-    transform: translateY(-5px); /* Moves up slightly */
+    transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Rounded and shadowed image */
+/* Image with Full Height */
 .about-img {
     max-width: 100%;
-    height: auto;
-    border-radius: 20px; /* Soft rounded corners */
+    height: 100%; /* Makes image match text height */
+    border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    object-fit: cover; /* Ensures the image fills the space without stretching */
 }
 
 
