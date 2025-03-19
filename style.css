@@ -174,12 +174,16 @@ body {
     border: 4px solid #007bff;
     margin-bottom: 15px;
 } */
- 
+
  /* Chef Image - Full Card Width */
 .chef-img {
     width: 100%;
     height: 250px; /* Adjust height to ensure consistency */
     object-fit: cover; /* Ensures the image covers the space properly */
+}
+/* Chef Info */
+.chef-info {
+    padding: 15px;
 }
 
 /* Button Styling */
