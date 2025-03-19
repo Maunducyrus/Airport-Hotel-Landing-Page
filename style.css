@@ -69,19 +69,27 @@ body {
     padding: 60px 0;
 }
 
+/* Floating Effect for the About Section */
+.about-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Lift on hover for floating effect */
+.about-content:hover {
+    transform: translateY(-5px); /* Moves up slightly */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
 /* Rounded and shadowed image */
 .about-img {
     max-width: 100%;
     height: auto;
     border-radius: 20px; /* Soft rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Button Centering */
-#about .btn {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 
