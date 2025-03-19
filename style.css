@@ -63,18 +63,47 @@ body {
     font-weight: bold;
 }
 
-/* Rooms Section */
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* General Room Section Styles */
+#rooms {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+}
+
+#rooms h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+.room-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
     transition: transform 0.3s ease-in-out;
 }
-.card:hover {
-    transform: translateY(-5px);
+
+.room-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
-.card img {
-    height: 200px;
-    object-fit: cover;
+
+.room-card h4 {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
+
+.room-card p {
+    color: #555;
+    font-size: 1rem;
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+}
+
 
 /* Footer */
 .footer {
