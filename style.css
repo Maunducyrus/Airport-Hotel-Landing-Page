@@ -63,6 +63,28 @@ body {
     font-weight: bold;
 }
 
+/* About Us Section */
+#about {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+/* Rounded and shadowed image */
+.about-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px; /* Soft rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Centering */
+#about .btn {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
 /* General Room Section Styles */
 #rooms {
     background-color: #f8f9fa;
