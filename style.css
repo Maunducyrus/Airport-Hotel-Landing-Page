@@ -166,13 +166,19 @@ body {
 }
 
 /* Chef Image */
-.chef-img {
+/* .chef-img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid #007bff;
     margin-bottom: 15px;
+} */
+ /* Chef Image - Full Card Width */
+.chef-img {
+    width: 100%;
+    height: 250px; /* Adjust height to ensure consistency */
+    object-fit: cover; /* Ensures the image covers the space properly */
 }
 
 /* Button Styling */
