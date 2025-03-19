@@ -6,7 +6,14 @@ body {
 
 /* Navbar Styles, Sticky Navbar */
 .navbar {
+    position: fixed; /* Sticks the navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #004d40 !important; /* Teal color for a luxurious look */
+    z-index: 1000; /* Ensures it's above other elements */
+    padding: 20px 0; /* Increases background size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar-nav .nav-link {
     color: white !important;
