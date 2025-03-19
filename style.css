@@ -278,7 +278,56 @@ body {
 #amenities .row .col-md-4 {
     margin-bottom: 30px; /* Adds space between the first and second row */
 }
+/* Contact Section */
+#contact {
+    background: #f8f9fa;
+    padding: 60px 0;
+}
 
+/* Contact Form Container */
+.contact-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Form Labels */
+#contact .form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form Fields */
+#contact .form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+/* Form Fields on Focus */
+#contact .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Contact Button */
+#contact .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* Button Hover */
+#contact .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
 /* Footer */
 .footer {
     background-color: #333;
