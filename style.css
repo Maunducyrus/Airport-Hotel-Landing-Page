@@ -237,7 +237,10 @@ body {
     width: 100%;
     font-weight: bold;
 }
-
+.event-card button:hover {
+    background-color: #225318;
+    color: white;
+}
 
 /* Footer */
 .footer {
