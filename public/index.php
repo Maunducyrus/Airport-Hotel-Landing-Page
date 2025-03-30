@@ -1,3 +1,28 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user = $_SESSION['user'];
+switch ($user['role']) {
+    case 'admin':
+        header("Location: ../src/views/admin/manage_users.php");
+        break;
+    case 'guest':
+        header("Location: ../src/views/guest/view_rooms.php");
+        break;
+    case 'staff':
+        header("Location: ../src/views/staff/manage_availability.php");
+        break;
+    default:
+        echo "Invalid role!";
+        break;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
