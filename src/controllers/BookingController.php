@@ -4,7 +4,9 @@ class BookingController {
     private $conn;
 
     public function __construct() {
-        require '../config/database.php';
+        // Include database connection
+        require_once(__DIR__ . '/../../controllers/BookingController.php');
+
         $this->conn = $conn;
     }
 
