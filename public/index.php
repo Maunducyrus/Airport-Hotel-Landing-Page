@@ -86,7 +86,7 @@ require_once '../config/database.php';
                 <!-- Deluxe Room -->
                 <div class="col-md-4">
                     <div class="card room-card">
-                        <img src="images/room1.jpg" class="card-img-top" alt="Deluxe Room">
+                        <img src="images/room 1.jpg" class="card-img-top" alt="Deluxe Room">
                         <div class="card-body">
                             <h5 class="card-title">Deluxe Room</h5>
                             <p class="card-text">Spacious and stylish with a city view, king-size bed and serene atmosphere</p>
