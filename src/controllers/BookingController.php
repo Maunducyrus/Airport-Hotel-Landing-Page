@@ -17,7 +17,7 @@ class BookingController {
     //     return $stmt->execute([$booking_id]);
     // }
     public function readUserBookings($user_id) {
-        require_once '../../config/Database.php';
+        require_once __DIR__ . '/../../config/Database.php';
         $db = new Database();
         $conn = $db->getConnection();
     
