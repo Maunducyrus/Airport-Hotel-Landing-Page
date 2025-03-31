@@ -5,7 +5,7 @@ class BookingController {
 
     public function __construct() {
         // Include database connection
-        include_once(__DIR__ . "/../../config/database.php");
+        require_once(__DIR__ . "/../../config/database.php");
 
         $this->conn = $conn;
     }
@@ -40,7 +40,11 @@ class BookingController {
     }
 
     public function getUserBookings($userId) {
-        $stmt = $this->conn->prepare("SELECT bookings.id, rooms.room_number, rooms.room_type, bookings.check_in_date, bookings.check_out_date FROM bookings JOIN rooms ON bookings.room_id = rooms.id WHERE bookings.user_id = ?");
+        $stmt = $this->conn->prepare("
+            SELECT bookings.id, rooms.room_number, rooms.room_type, bookings.check_in_date, bookings.check_out_date 
+            FROM bookings 
+            JOIN rooms ON bookings.room_id = rooms.id 
+            WHERE bookings.user_id = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -76,6 +80,24 @@ class BookingController {
         } else {
             return "Failed to cancel booking. Please try again.";
         }
+    }
+
+    // Added this function to fetch all bookings (for view_bookings.php)
+    public function readBookings() {
+        $stmt = $this->conn->prepare("
+            SELECT bookings.id, users.username, rooms.room_number, rooms.room_type, 
+                   bookings.check_in_date, bookings.check_out_date 
+            FROM bookings 
+            JOIN users ON bookings.user_id = users.id 
+            JOIN rooms ON bookings.room_id = rooms.id
+        ");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $bookings = [];
+        while ($row = $result->fetch_assoc()) {
+            $bookings[] = $row;
+        }
+        return $bookings;
     }
 }
 ?>
