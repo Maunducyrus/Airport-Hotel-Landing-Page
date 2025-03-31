@@ -1,5 +1,4 @@
 <?php
-require_once '../config/database.php';
 
 class RoomController {
     public function createRoom($room_number, $room_type, $price, $availability) {
