@@ -307,7 +307,7 @@ require_once '../config/database.php';
                 <!-- Airport Shuttle -->
                 <div class="col-md-4">
                     <div class="amenity-card">
-                        <img src="images/shuttle_van.jpg" alt="Airport Shuttle" class="amenity-img">
+                        <img src="images/shuttle van.jpg" alt="Airport Shuttle" class="amenity-img">
                         <h4>🚐 Airport Shuttle</h4>
                         <p>Enjoy hassle-free transport to and from the airport.</p>
                     </div>
