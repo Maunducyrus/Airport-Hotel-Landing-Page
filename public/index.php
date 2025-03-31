@@ -110,7 +110,7 @@ require_once '../config/database.php';
                 <!-- Standard Room -->
                 <div class="col-md-4">
                     <div class="card room-card">
-                        <img src="images/room3.jpg" class="card-img-top" alt="Standard Room">
+                        <img src="images/room 3.jpg" class="card-img-top" alt="Standard Room">
                         <div class="card-body">
                             <h5 class="card-title">Standard Room</h5>
                             <p class="card-text">Comfortable and affordable, perfect for business travellers and solo guests.</p>
