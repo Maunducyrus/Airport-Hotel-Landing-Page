@@ -41,7 +41,7 @@ require_once '../config/database.php';
         <div class="container">
             <h1>Welcome to Airport Hotel</h1>
             <p>Your comfort is our priority</p>
-            <a href="#rooms" class="btn btn-warning">Book Room Now</a>
+            <a href="views/guest/book_room.php" class="btn btn-warning">Book Room Now</a>
         </div>
     </header>
 
