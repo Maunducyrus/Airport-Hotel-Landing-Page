@@ -98,7 +98,7 @@ require_once '../config/database.php';
                 <!-- Suite Room -->
                 <div class="col-md-4">
                     <div class="card room-card">
-                        <img src="images/room2.jpg" class="card-img-top" alt="Suite Room">
+                        <img src="images/room 2.jpg" class="card-img-top" alt="Suite Room">
                         <div class="card-body">
                             <h5 class="card-title">Suite Room</h5>
                             <p class="card-text">A luxurious suite with a private balcony, spacious lounge, and 24/7 room service.</p>
