@@ -280,7 +280,7 @@ require_once '../config/database.php';
                 <!-- Free Wi-Fi -->
                 <div class="col-md-4">
                     <div class="amenity-card">
-                        <img src="images/free_wi-fi.jpg" alt="Free Wi-Fi" class="amenity-img">
+                        <img src="images/free wifi.jpg" alt="Free Wi-Fi" class="amenity-img">
                         <h4>📶 Free Wi-Fi</h4>
                         <p>Enjoy high-speed internet throughout the hotel.</p>
                     </div>
