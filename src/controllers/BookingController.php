@@ -16,6 +16,23 @@ class BookingController {
     //     $stmt = $this->conn->prepare($query);
     //     return $stmt->execute([$booking_id]);
     // }
+    public function readUserBookings($user_id) {
+        require_once '../../config/Database.php';
+        $db = new Database();
+        $conn = $db->getConnection();
+    
+        $stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id = ?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $bookings = [];
+        while ($row = $result->fetch_assoc()) {
+            $bookings[] = $row;
+        }
+        return $bookings;
+    }
+    
     
 
     public function bookRoom($userId, $roomId, $checkInDate, $checkOutDate) {
