@@ -10,6 +10,14 @@ class BookingController {
         $this->conn = $conn;
     }
 
+    // booking canellation
+    // public function cancelBooking($booking_id) {
+    //     $query = "DELETE FROM bookings WHERE id = ?";
+    //     $stmt = $this->conn->prepare($query);
+    //     return $stmt->execute([$booking_id]);
+    // }
+    
+
     public function bookRoom($userId, $roomId, $checkInDate, $checkOutDate) {
         // Check room availability
         $stmt = $this->conn->prepare("SELECT availability FROM rooms WHERE id = ?");
