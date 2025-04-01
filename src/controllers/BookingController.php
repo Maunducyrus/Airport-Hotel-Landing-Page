@@ -10,9 +10,9 @@ class BookingController {
         $this->conn = $conn;
     }
     public function readUserBookings($user_id) {
-        require_once __DIR__ . '/../../config/Database.php';
-        $db = new Database();
-        $conn = $db->getConnection();
+        // require_once __DIR__ . '/../../config/Database.php';
+        // $db = new Database();
+        // $conn = $db->getConnection();
     
         $stmt = $conn->prepare("SELECT * FROM bookings WHERE user_id = ?");
         $stmt->bind_param("i", $user_id);
