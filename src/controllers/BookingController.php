@@ -5,17 +5,10 @@ class BookingController {
 
     public function __construct() {
         // Include database connection
-        require_once(__DIR__ . "/../../config/database.php");
+        require_once __DIR__ . '/../../config/Database.php';
 
         $this->conn = $conn;
     }
-
-    // booking canellation
-    // public function cancelBooking($booking_id) {
-    //     $query = "DELETE FROM bookings WHERE id = ?";
-    //     $stmt = $this->conn->prepare($query);
-    //     return $stmt->execute([$booking_id]);
-    // }
     public function readUserBookings($user_id) {
         require_once __DIR__ . '/../../config/Database.php';
         $db = new Database();
