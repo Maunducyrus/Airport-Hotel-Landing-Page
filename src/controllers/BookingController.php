@@ -1,11 +1,12 @@
 <?php
 
+require_once __DIR__ . '/../../config/Database.php';
+
 class BookingController {
     private $conn;
 
     public function __construct() {
         // Include database connection
-        require_once __DIR__ . '/../../config/Database.php';
         $database = new Database();
         $this->conn = $conn;
     }
