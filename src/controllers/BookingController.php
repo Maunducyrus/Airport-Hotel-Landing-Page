@@ -6,8 +6,10 @@ class BookingController {
 
     public function __construct() {
         // Include database connection
-        $database = new Database();
-        $this->conn = $conn;
+        $db = new Database();
+        // $this->conn = $conn;
+        $this->conn = $db->getConnection(); // Assign connection correctly
+        
     }
     public function readUserBookings($user_id) {
         // require_once __DIR__ . '/../../config/Database.php';
