@@ -5,8 +5,8 @@ class RoomController {
     private $conn;
 
     public function __construct() {
-        $db = new Database(); // ✅ Create Database instance
-        $this->conn = $db->getConnection(); // ✅ Assign the connection
+        $db = new Database(); //  Create Database instance
+        $this->conn = $db->getConnection(); //  Assign the connection
     }
 
     public function createRoom($room_number, $room_type, $price, $availability) {
