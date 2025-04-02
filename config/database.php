@@ -1,4 +1,8 @@
 <?php
+if (class_exists('Database')) {
+    return; // Prevent re-declaration
+}
+
 class Database {
     private $host = "localhost";
     private $db_name = "hotel_booking";
