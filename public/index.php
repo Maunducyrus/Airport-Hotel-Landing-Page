@@ -106,7 +106,9 @@ require_once '../config/database.php';
                         <div class="card-body">
                             <h5 class="card-title">Suite Room</h5>
                             <p class="card-text">A luxurious suite with a private balcony, spacious lounge, and 24/7 room service.</p>
+                            <a href="http://localhost/AirportHotel/public/guest_dashboard.php">
                             <button class="btn btn-primary" onclick="bookRoom(2)">Book Now</button>
+                            </a>
                         </div>
                     </div>
                 </div>
