@@ -62,6 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn btn-primary w-100">Book Room</button>
     </form>
 </div>
+<br><br>
+<div class="text-center mt-3">
+        <a href="http://localhost/AirportHotel/public/guest_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

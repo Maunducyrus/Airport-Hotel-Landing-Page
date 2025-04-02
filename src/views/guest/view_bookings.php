@@ -84,8 +84,8 @@ if (isset($_SESSION['booking_message'])) {
                                         <td>Room #<?= htmlspecialchars($booking['room_id']) ?></td>
                                         <td><?= htmlspecialchars($booking['check_in_date']) ?></td>
                                         <td><?= htmlspecialchars($booking['check_out_date']) ?></td>
-                                        <td class="status-<?= htmlspecialchars($booking['status']) ?>">
-                                            <?= ucfirst(htmlspecialchars($booking['status'])) ?>
+                                        <td class="status-<?= htmlspecialchars($booking['status'] ?? 'confirmed') ?>">
+                                            <?= ucfirst(htmlspecialchars($booking['status'] ?? 'confirmed')) ?>
                                         </td>
                                         <td>
                                             <?php if ($booking['status'] === 'confirmed'): ?>
@@ -109,7 +109,7 @@ if (isset($_SESSION['booking_message'])) {
                 <?php endif; ?>
                 
                 <div class="text-center mt-3">
-                    <a href="../guest/" class="btn btn-secondary">Back to Dashboard</a>
+                    <a href="http://localhost/AirportHotel/public/guest_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
                 </div>
             </div>
         </div>

@@ -69,7 +69,13 @@ $rooms = $roomController->readRooms();
             </tbody>
         </table>
     </div>
+
+    
 </div>
+
+<div class="text-center mt-3">
+        <a href="http://localhost/AirportHotel/public/guest_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
 
 </body>
 </html>
