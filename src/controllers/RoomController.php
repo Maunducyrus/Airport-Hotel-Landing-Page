@@ -43,5 +43,33 @@ class RoomController {
     //         return "Error: " . $stmt->error;
     //     }
     // }
+    public function deleteRoom($room_id) {
+        try {
+            // Start transaction
+            $this->conn->begin_transaction();
+            
+            // First cancel all bookings for this room
+            $stmt = $this->conn->prepare("
+                UPDATE bookings 
+                SET status = 'cancelled', cancelled_at = NOW() 
+                WHERE room_id = ? AND status = 'confirmed'
+            ");
+            $stmt->bind_param("i", $room_id);
+            $stmt->execute();
+            
+            // Then delete the room
+            $stmt = $this->conn->prepare("DELETE FROM rooms WHERE id = ?");
+            $stmt->bind_param("i", $room_id);
+            $stmt->execute();
+            
+            $this->conn->commit();
+            return true;
+            
+        } catch (Exception $e) {
+            $this->conn->rollback();
+            error_log("Delete room error: " . $e->getMessage());
+            return "Error deleting room: " . $e->getMessage();
+        }
+    }
 }
 ?>
