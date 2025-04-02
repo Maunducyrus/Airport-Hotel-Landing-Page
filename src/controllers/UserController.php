@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . "/../../config/database.php");
 
-class AuthController {
+class UserController {
     private $conn;
 
     public function __construct() {
@@ -18,65 +18,62 @@ class AuthController {
     }
 
     /**
-     * Authenticate user login
-     * @param string $email User's email
-     * @param string $password User's password
-     * @return array|false Returns user data if successful, false otherwise
+     * Get all users from database
+     * @return array Array of users
      */
-    public function login($email, $password) {
-        // Validate inputs
-        $email = $this->sanitizeInput($email);
-        $password = trim($password);
-        
-        if (empty($email) || empty($password)) {
-            return false;
-        }
-
+    public function readUsers() {
         try {
-            // Prepare SQL statement
-            $stmt = $this->conn->prepare("SELECT id, username, email, password, role FROM users WHERE email = ?");
-            if (!$stmt) {
-                throw new Exception("Prepare failed: " . $this->conn->error);
-            }
-
-            // Bind parameters and execute
-            $stmt->bind_param("s", $email);
-            if (!$stmt->execute()) {
-                throw new Exception("Execute failed: " . $stmt->error);
-            }
-
-            // Get result
+            $stmt = $this->conn->prepare("SELECT id, username, email, role, created_at FROM users");
+            $stmt->execute();
             $result = $stmt->get_result();
-            if ($result->num_rows === 0) {
-                return false;
-            }
-
-            $user = $result->fetch_assoc();
-
-            // Verify password
-            if (password_verify($password, $user['password'])) {
-                // Remove password before returning user data
-                unset($user['password']);
-                return $user;
-            }
-
-            return false;
+            return $result->fetch_all(MYSQLI_ASSOC);
         } catch (Exception $e) {
-            error_log("Login error: " . $e->getMessage());
+            error_log("Error reading users: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Create a new user
+     */
+    public function createUser($username, $email, $password, $role) {
+        try {
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log("Error creating user: " . $e->getMessage());
             return false;
         }
     }
 
     /**
-     * Sanitize user input
-     * @param string $input User input
-     * @return string Sanitized input
+     * Update user information
      */
-    private function sanitizeInput($input) {
-        $input = trim($input);
-        $input = stripslashes($input);
-        $input = htmlspecialchars($input);
-        return $input;
+    public function updateUser($id, $username, $email, $role) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?");
+            $stmt->bind_param("sssi", $username, $email, $role, $id);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log("Error updating user: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Delete a user
+     */
+    public function deleteUser($id) {
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log("Error deleting user: " . $e->getMessage());
+            return false;
+        }
     }
 
     /**
