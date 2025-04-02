@@ -3,7 +3,8 @@ class AuthController {
     private $conn;
 
     public function __construct() {
-        require '../config/database.php';
+        // updated from require to require_once
+        require_once '../config/database.php';
         $this->conn = $conn;
     }
 
