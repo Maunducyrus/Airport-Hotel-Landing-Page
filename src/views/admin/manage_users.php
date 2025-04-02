@@ -158,6 +158,10 @@ $users = $userController->readUsers();
         </div>
     </div>
 
+    <div class="text-center mt-3">
+        <a href="http://localhost/AirportHotel/public/admin_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -104,5 +104,10 @@ $rooms = $roomController->readRooms();
         document.querySelector('[name=update]').textContent = 'Update Room';
     }
 </script>
+
+<div class="text-center mt-3">
+        <a href="http://localhost/AirportHotel/public/admin_dashboard.php" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+
 </body>
 </html>
