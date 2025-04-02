@@ -34,14 +34,14 @@ class RoomController {
         }
     }
 
-    public function deleteRoom($id) {
-        $stmt = $this->conn->prepare("DELETE FROM rooms WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
-            return "Room deleted successfully!";
-        } else {
-            return "Error: " . $stmt->error;
-        }
-    }
+    // public function deleteRoom($id) {
+    //     $stmt = $this->conn->prepare("DELETE FROM rooms WHERE id = ?");
+    //     $stmt->bind_param("i", $id);
+    //     if ($stmt->execute()) {
+    //         return "Room deleted successfully!";
+    //     } else {
+    //         return "Error: " . $stmt->error;
+    //     }
+    // }
 }
 ?>
