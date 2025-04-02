@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Verify admin access first
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+    header("Location: ../../../public/login.php");
+    exit();
+}
 
 require_once __DIR__ . '../../controllers/UserController.php';
 
