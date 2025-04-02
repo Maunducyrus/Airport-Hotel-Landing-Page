@@ -2,24 +2,27 @@
 require_once(__DIR__ . "/../../config/database.php");
 
 class UserController {
+    private $conn; // Store the database connection
+
+    public function __construct() {
+        $database = new Database(); // Create a Database instance
+        $this->conn = $database->getConnection(); // Get the connection
+    }
+
     public function createUser($username, $email, $password, $role) {
-        global $conn;
-    
-        // Validate inputs
+        // Remove global $conn and use $this->conn
         if (empty($username) || empty($email) || empty($password)) {
             die("Error: All fields are required.");
         }
-    
-        // Hash the password before storing it
+
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    
         $sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-    
+        $stmt = $this->conn->prepare($sql); // Use $this->conn
+
         if (!$stmt) {
-            die("SQL error: " . $conn->error);
+            die("SQL error: " . $this->conn->error);
         }
-    
+
         $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role);
         
         if ($stmt->execute()) {
@@ -28,17 +31,14 @@ class UserController {
             return "Error: " . $stmt->error;
         }
     }
-    
 
     public function readUsers() {
-        global $conn;
-        $result = $conn->query("SELECT * FROM users");
+        $result = $this->conn->query("SELECT * FROM users"); // Use $this->conn
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function updateUser($id, $username, $email, $role) {
-        global $conn;
-        $stmt = $conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?");
+        $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?");
         $stmt->bind_param("sssi", $username, $email, $role, $id);
         if ($stmt->execute()) {
             return "User updated successfully!";
@@ -48,8 +48,7 @@ class UserController {
     }
 
     public function deleteUser($id) {
-        global $conn;
-        $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+        $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $id);
         if ($stmt->execute()) {
             return "User deleted successfully!";
@@ -58,4 +57,5 @@ class UserController {
         }
     }
 }
+
 ?>
