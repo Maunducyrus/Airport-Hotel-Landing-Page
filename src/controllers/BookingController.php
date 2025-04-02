@@ -72,32 +72,7 @@ class BookingController {
         return $bookings;
     }
 
-    public function cancelBooking($bookingId, $userId) {
-        // Get the room ID for the booking
-        $stmt = $this->conn->prepare("SELECT room_id FROM bookings WHERE id = ? AND user_id = ?");
-        $stmt->bind_param("ii", $bookingId, $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows == 0) {
-            return "Booking not found.";
-        }
 
-        $booking = $result->fetch_assoc();
-        $roomId = $booking['room_id'];
-
-        // Delete the booking
-        $stmt = $this->conn->prepare("DELETE FROM bookings WHERE id = ?");
-        $stmt->bind_param("i", $bookingId);
-        if ($stmt->execute()) {
-            // Mark room as available
-            $stmt = $this->conn->prepare("UPDATE rooms SET availability = 1 WHERE id = ?");
-            $stmt->bind_param("i", $roomId);
-            $stmt->execute();
-            return "Booking cancelled successfully!";
-        } else {
-            return "Failed to cancel booking. Please try again.";
-        }
-    }
 
     // Added this function to fetch all bookings (for view_bookings.php)
     public function readBookings() {
