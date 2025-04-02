@@ -89,7 +89,7 @@ if (isset($_SESSION['booking_message'])) {
                                         </td>
                                         <td>
                                             <?php if ($booking['status'] === 'confirmed'): ?>
-                                                <form method="POST" action="cancel_booking.php" class="d-inline">
+                                                <form method="POST" action="/AirportHotel/src/views/guest/cancel_booking.php" class="d-inline">
                                                     <input type="hidden" name="id" value="<?= $booking['id'] ?>">
                                                     <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                                                     <button type="submit" class="btn btn-sm btn-danger" 
