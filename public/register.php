@@ -1,27 +1,27 @@
 <?php
-session_start();
-require_once '../config/database.php';
-require_once '../src/controllers/AuthController.php';
+// session_start();
+// require_once '../config/database.php';
+// require_once '../src/controllers/AuthController.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $role = $_POST['role']; // 'guest', 'staff', or 'admin'
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $username = $_POST['username'];
+//     $email = $_POST['email'];
+//     $password = $_POST['password'];
+//     $role = $_POST['role']; // 'guest', 'staff', or 'admin'
 
-    $authController = new AuthController();
-    $response = $authController->register($username, $email, $password, $role);
+//     $authController = new AuthController();
+//     $response = $authController->register($username, $email, $password, $role);
 
-    if ($response === "Registration successful!") {
-        header("Location: login.php");
-        exit();
-    } else {
-        $error = $response;
-    }
-}
+//     if ($response === "Registration successful!") {
+//         header("Location: login.php");
+//         exit();
+//     } else {
+//         $error = $response;
+//     }
+// }
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -64,4 +64,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-</html>
+</html> -->
