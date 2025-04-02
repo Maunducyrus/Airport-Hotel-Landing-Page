@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'guest') {
+    header("Location: ../../../public/login.php");
+    exit();
+}
+
+// Get the logged-in user's ID
+$user_id = $_SESSION['user']['id'];
+
 require_once '../../controllers/BookingController.php';
 $bookingController = new BookingController();
 
