@@ -37,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Store minimal user data in session
             $_SESSION['user'] = [
                 'id' => $user['id'],
-                'username' => $user['username'], //wanting display the user in dashboard
                 'email' => $user['email'],
                 'role' => $user['role']
             ];
