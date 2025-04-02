@@ -24,6 +24,12 @@ class Database {
 
         return $this->conn;
     }
+
+    public function --destrut() {
+        if ($this->conn) {
+            $this->conn->close();
+        }
+    }
 }
 ?>
 
