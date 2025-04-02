@@ -59,7 +59,7 @@ $users = $userController->readUsers();
             background-color: #dc3545;
             border-color: #dc3545;
         }
-        .btn-update, .btn-delete:hover {
+        .btn-delete:hover {
             background-color:rgb(249, 23, 7);
         }
         .table th {
@@ -135,6 +135,7 @@ $users = $userController->readUsers();
                                                             <option value="staff" <?php if ($user['role'] == 'staff') echo 'selected'; ?>>Staff</option>
                                                         </select>
                                                         <button type="submit" name="update" class="btn btn-update btn-sm text-white">Update</button>
+                                                        
                                                         <button type="submit" name="delete" class="btn btn-delete btn-sm text-white">Delete</button>
                                                     </div>
                                                 </form>
