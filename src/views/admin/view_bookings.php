@@ -10,7 +10,7 @@ print_r($bookings);
 echo "</pre>";
 
 if (empty($bookings)) {
-    echo "<p class='text-danger text-center'>No bookings found or database issue.</p>";
+    echo "<p class='text-danger text-center'>No bookings found</p>";
 }
 ?>
 
