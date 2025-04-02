@@ -65,16 +65,7 @@ class UserController {
     /**
      * Delete a user
      */
-    public function deleteUser($id) {
-        try {
-            $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
-            $stmt->bind_param("i", $id);
-            return $stmt->execute();
-        } catch (Exception $e) {
-            error_log("Error deleting user: " . $e->getMessage());
-            return false;
-        }
-    }
+   
 
     /**
      * Close database connection
