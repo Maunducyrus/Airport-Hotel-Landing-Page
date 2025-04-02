@@ -14,7 +14,6 @@ if (empty($bookings)) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,30 +26,34 @@ if (empty($bookings)) {
     <div class="container mt-5">
         <h1 class="text-center mb-4">View All Bookings</h1>
         <div class="card shadow p-4">
-            <table class="table table-striped table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>User ID</th>
-                        <th>Room ID</th>
-                        <th>Check-in Date</th>
-                        <th>Check-out Date</th>
-                        <th>Created At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($bookings as $booking): ?>
+            <?php if (empty($bookings)): ?>
+                <p class="text-danger text-center">No bookings found</p>
+            <?php else: ?>
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
                         <tr>
-                            <td><?php echo $booking['id']; ?></td>
-                            <td><?php echo $booking['user_id']; ?></td>
-                            <td><?php echo $booking['room_id']; ?></td>
-                            <td><?php echo $booking['check_in_date']; ?></td>
-                            <td><?php echo $booking['check_out_date']; ?></td>
-                            <td><?php echo $booking['created_at']; ?></td>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Room Number</th>
+                            <th>Room Type</th>
+                            <th>Check-in Date</th>
+                            <th>Check-out Date</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($bookings as $booking): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($booking['id']) ?></td>
+                                <td><?= htmlspecialchars($booking['username']) ?></td>
+                                <td><?= htmlspecialchars($booking['room_number']) ?></td>
+                                <td><?= htmlspecialchars($booking['room_type']) ?></td>
+                                <td><?= htmlspecialchars($booking['check_in_date']) ?></td>
+                                <td><?= htmlspecialchars($booking['check_out_date']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
     </div>
 
