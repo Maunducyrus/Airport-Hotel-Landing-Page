@@ -1,8 +1,6 @@
 <?php
-if (!file_exists(__DIR__ . '/../../controllers/UserController.php')) {
-    die("Error: UserController.php not found!");
-}
-require_once __DIR__ . '/../../controllers/UserController.php';
+
+require_once __DIR__ . '../../controllers/UserController.php';
 
 $userController = new UserController();
 
