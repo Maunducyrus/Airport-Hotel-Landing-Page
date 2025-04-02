@@ -4,11 +4,6 @@ require_once '../../controllers/BookingController.php';
 $bookingController = new BookingController();
 $bookings = $bookingController->readBookings();
 
-// Debugging: Check if $bookings has data
-echo "<pre>";
-print_r($bookings);
-echo "</pre>";
-
 if (empty($bookings)) {
     echo "<p class='text-danger text-center'>No bookings found</p>";
 }
