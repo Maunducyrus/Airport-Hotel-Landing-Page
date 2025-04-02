@@ -1,61 +1,91 @@
 <?php
 require_once(__DIR__ . "/../../config/database.php");
 
-class UserController {
-    private $conn; // Store the database connection
+class AuthController {
+    private $conn;
 
     public function __construct() {
-        $database = new Database(); // Create a Database instance
-        $this->conn = $database->getConnection(); // Get the connection
+        try {
+            $database = new Database();
+            $this->conn = $database->getConnection();
+            
+            if ($this->conn->connect_error) {
+                throw new Exception("Database connection failed: " . $this->conn->connect_error);
+            }
+        } catch (Exception $e) {
+            die("Error: " . $e->getMessage());
+        }
     }
 
-    public function createUser($username, $email, $password, $role) {
-        // Remove global $conn and use $this->conn
-        if (empty($username) || empty($email) || empty($password)) {
-            die("Error: All fields are required.");
-        }
-
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($sql); // Use $this->conn
-
-        if (!$stmt) {
-            die("SQL error: " . $this->conn->error);
-        }
-
-        $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role);
+    /**
+     * Authenticate user login
+     * @param string $email User's email
+     * @param string $password User's password
+     * @return array|false Returns user data if successful, false otherwise
+     */
+    public function login($email, $password) {
+        // Validate inputs
+        $email = $this->sanitizeInput($email);
+        $password = trim($password);
         
-        if ($stmt->execute()) {
-            return "User created successfully.";
-        } else {
-            return "Error: " . $stmt->error;
+        if (empty($email) || empty($password)) {
+            return false;
+        }
+
+        try {
+            // Prepare SQL statement
+            $stmt = $this->conn->prepare("SELECT id, username, email, password, role FROM users WHERE email = ?");
+            if (!$stmt) {
+                throw new Exception("Prepare failed: " . $this->conn->error);
+            }
+
+            // Bind parameters and execute
+            $stmt->bind_param("s", $email);
+            if (!$stmt->execute()) {
+                throw new Exception("Execute failed: " . $stmt->error);
+            }
+
+            // Get result
+            $result = $stmt->get_result();
+            if ($result->num_rows === 0) {
+                return false;
+            }
+
+            $user = $result->fetch_assoc();
+
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Remove password before returning user data
+                unset($user['password']);
+                return $user;
+            }
+
+            return false;
+        } catch (Exception $e) {
+            error_log("Login error: " . $e->getMessage());
+            return false;
         }
     }
 
-    public function readUsers() {
-        $result = $this->conn->query("SELECT * FROM users"); // Use $this->conn
-        return $result->fetch_all(MYSQLI_ASSOC);
+    /**
+     * Sanitize user input
+     * @param string $input User input
+     * @return string Sanitized input
+     */
+    private function sanitizeInput($input) {
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input);
+        return $input;
     }
 
-    public function updateUser($id, $username, $email, $role) {
-        $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ?, role = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $username, $email, $role, $id);
-        if ($stmt->execute()) {
-            return "User updated successfully!";
-        } else {
-            return "Error: " . $stmt->error;
-        }
-    }
-
-    public function deleteUser($id) {
-        $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        if ($stmt->execute()) {
-            return "User deleted successfully!";
-        } else {
-            return "Error: " . $stmt->error;
+    /**
+     * Close database connection
+     */
+    public function __destruct() {
+        if ($this->conn) {
+            $this->conn->close();
         }
     }
 }
-
 ?>
