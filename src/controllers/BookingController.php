@@ -11,19 +11,7 @@ class BookingController {
         $this->conn = $db->getConnection(); // Assign connection correctly
 
     }
-    public function readUserBookings($user_id) {
-        
-        $stmt = $this->conn->prepare("SELECT * FROM bookings WHERE user_id = ?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        $bookings = [];
-        while ($row = $result->fetch_assoc()) {
-            $bookings[] = $row;
-        }
-        return $bookings;
-    }
+
     
     
 
