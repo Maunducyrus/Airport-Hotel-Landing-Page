@@ -25,7 +25,7 @@ class Database {
         return $this->conn;
     }
 
-    public function --destrut() {
+    public function __destrut() {
         if ($this->conn) {
             $this->conn->close();
         }
