@@ -3,55 +3,96 @@ class AuthController {
     private $conn;
 
     public function __construct() {
-        // updated from require to require_once
-        require_once '../config/database.php';
-        $this->conn = $conn;
+        try {
+            $database = new Database();
+            $this->conn = $database->getConnection();
+            
+            if ($this->conn === null) {
+                throw new Exception("Database connection not established");
+            }
+        } catch (Exception $e) {
+            error_log("AuthController error: " . $e->getMessage());
+            throw $e; // Let calling code handle this
+        }
     }
 
     public function register($username, $email, $password, $role) {
-        // Check if the email already exists
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        try {
+            // Validate inputs
+            $username = $this->sanitizeInput($username);
+            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return "Invalid email format";
+            }
 
-        if ($result->num_rows > 0) {
-            return "Email already exists!";
-        }
+            // Check email existence
+            $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            
+            if ($stmt->get_result()->num_rows > 0) {
+                return "Email already exists";
+            }
 
-        // Hash the password
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            // Hash password and insert
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+            $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role);
 
-        // Insert the new user into the database
-        $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $username, $email, $hashedPassword, $role);
-
-        if ($stmt->execute()) {
-            return "Registration successful!";
-        } else {
+            return $stmt->execute() 
+                ? "Registration successful" 
+                : "Registration failed: " . $stmt->error;
+                
+        } catch (Exception $e) {
+            error_log("Registration error: " . $e->getMessage());
             return "Registration failed. Please try again.";
         }
     }
 
     public function login($email, $password) {
-        // Check if the user exists
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        try {
+            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                return "Invalid email format";
+            }
 
-        if ($result->num_rows == 0) {
-            return "Invalid email or password!";
-        }
+            $stmt = $this->conn->prepare("SELECT id, username, email, password, role FROM users WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            
+            $result = $stmt->get_result();
+            if ($result->num_rows === 0) {
+                return "Invalid credentials";
+            }
 
-        $user = $result->fetch_assoc();
-
-        // Verify the password
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user;
-            return "Login successful!";
-        } else {
-            return "Invalid email or password!";
+            $user = $result->fetch_assoc();
+            
+            if (password_verify($password, $user['password'])) {
+                // Store only necessary data in session
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                    'role' => $user['role']
+                ];
+                return "Login successful";
+            }
+            
+            return "Invalid credentials";
+            
+        } catch (Exception $e) {
+            error_log("Login error: " . $e->getMessage());
+            return "Login failed. Please try again.";
         }
     }
+
+    private function sanitizeInput($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 }
+?>
