@@ -62,6 +62,9 @@ $users = $userController->readUsers();
         .btn-delete:hover {
             background-color:rgb(249, 23, 7);
         }
+        .btn-update:hover {
+            background-color:rgb(34, 224, 9);
+        }
         .table th {
             background-color: #343a40;
             color: white;
