@@ -7,7 +7,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     exit();
 }
 
-require_once __DIR__ . '../../controllers/UserController.php';
+require_once __DIR__ . '/../../controllers/UserController.php';
 
 $userController = new UserController();
 
