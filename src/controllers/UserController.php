@@ -65,7 +65,30 @@ class UserController {
     /**
      * Delete a user
      */
-   
+    public function deleteUser($id) {
+        try {
+            // Start transaction
+            $this->conn->begin_transaction();
+            
+            // 1. First delete all user's bookings
+            $stmt = $this->conn->prepare("DELETE FROM bookings WHERE user_id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            
+            // 2. Then delete the user
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            
+            $this->conn->commit();
+            return true;
+            
+        } catch (Exception $e) {
+            $this->conn->rollback();
+            error_log("Delete user error: " . $e->getMessage());
+            return "Error deleting user: " . $e->getMessage();
+        }
+    }
 
     /**
      * Close database connection
