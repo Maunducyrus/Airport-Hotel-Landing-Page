@@ -50,43 +50,6 @@ class AuthController {
         }
     }
 
-    // public function login($email, $password) {
-    //     try {
-    //         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-            
-    //         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //             return "Invalid email format";
-    //         }
-
-    //         $stmt = $this->conn->prepare("SELECT id, username, email, password, role FROM users WHERE email = ?");
-    //         $stmt->bind_param("s", $email);
-    //         $stmt->execute();
-            
-    //         $result = $stmt->get_result();
-    //         if ($result->num_rows === 0) {
-    //             return "Invalid credentials";
-    //         }
-
-    //         $user = $result->fetch_assoc();
-            
-    //         if (password_verify($password, $user['password'])) {
-    //             // Store only necessary data in session
-    //             $_SESSION['user'] = [
-    //                 'id' => $user['id'],
-    //                 'username' => $user['username'],
-    //                 'email' => $user['email'],
-    //                 'role' => $user['role']
-    //             ];
-    //             return "Login successful";
-    //         }
-            
-    //         return "Invalid credentials";
-            
-    //     } catch (Exception $e) {
-    //         error_log("Login error: " . $e->getMessage());
-    //         return "Login failed. Please try again.";
-    //     }
-    // }
     public function login($email, $password) {
         try {
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
