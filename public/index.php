@@ -92,7 +92,9 @@ require_once '../config/database.php';
                         <div class="card-body">
                             <h5 class="card-title">Deluxe Room</h5>
                             <p class="card-text">Spacious and stylish with a city view, king-size bed and serene atmosphere</p>
+                            <a href="http://localhost/AirportHotel/public/guest_dashboard.php">
                             <button class="btn btn-primary" onclick="bookRoom(1)">Book Now</button>
+                            </a>
                         </div>
                     </div>
                 </div>
