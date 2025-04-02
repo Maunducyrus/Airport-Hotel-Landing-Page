@@ -11,8 +11,30 @@ class BookingController {
         $this->conn = $db->getConnection(); // Assign connection correctly
 
     }
-
-    
+    public function readUserBookings($user_id) {
+        try {
+            $stmt = $this->conn->prepare("
+                SELECT 
+                    b.id, 
+                    b.room_id, 
+                    DATE_FORMAT(b.check_in_date, '%Y-%m-%d') as check_in_date,
+                    DATE_FORMAT(b.check_out_date, '%Y-%m-%d') as check_out_date,
+                    DATE_FORMAT(b.created_at, '%Y-%m-%d') as created_at,
+                    IFNULL(b.status, 'confirmed') as status
+                FROM bookings b
+                WHERE b.user_id = ?
+                ORDER BY b.check_in_date DESC
+            ");
+            $stmt->bind_param("i", $user_id);
+            $stmt->execute();
+            
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (Exception $e) {
+            error_log("Error fetching bookings: " . $e->getMessage());
+            return [];
+        }
+    }
     
 
     public function bookRoom($userId, $roomId, $checkInDate, $checkOutDate) {
