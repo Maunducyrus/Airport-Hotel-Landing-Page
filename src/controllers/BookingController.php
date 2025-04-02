@@ -72,7 +72,39 @@ class BookingController {
         return $bookings;
     }
 
-
+    public function cancelBooking($booking_id, $user_id) {
+        try {
+            // Verify the booking belongs to the user
+            $stmt = $this->conn->prepare("
+                SELECT id FROM bookings 
+                WHERE id = ? AND user_id = ?
+            ");
+            $stmt->bind_param("ii", $booking_id, $user_id);
+            $stmt->execute();
+            
+            if ($stmt->get_result()->num_rows === 0) {
+                return "Booking not found or doesn't belong to you";
+            }
+    
+            // Update booking status to cancelled
+            $update = $this->conn->prepare("
+                UPDATE bookings 
+                SET status = 'cancelled', 
+                    cancelled_at = NOW() 
+                WHERE id = ?
+            ");
+            $update->bind_param("i", $booking_id);
+            
+            if ($update->execute()) {
+                return true;
+            } else {
+                throw new Exception("Failed to cancel booking");
+            }
+        } catch (Exception $e) {
+            error_log("Cancel booking error: " . $e->getMessage());
+            return "Error cancelling booking. Please try again.";
+        }
+    }
 
     // Added this function to fetch all bookings (for view_bookings.php)
     public function readBookings() {
