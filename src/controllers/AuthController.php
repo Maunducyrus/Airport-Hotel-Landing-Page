@@ -52,41 +52,27 @@ class AuthController {
 
     public function login($email, $password) {
         try {
-            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                return ['success' => false, 'message' => 'Invalid email format'];
-            }
-    
             $stmt = $this->conn->prepare("SELECT id, username, email, password, role FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            
             $result = $stmt->get_result();
+    
             if ($result->num_rows === 0) {
-                return ['success' => false, 'message' => 'Invalid credentials'];
+                return null; // No user found
             }
     
             $user = $result->fetch_assoc();
-            
+    
             if (password_verify($password, $user['password'])) {
-                return [
-                    'success' => true,
-                    'user' => [
-                        'id' => $user['id'],
-                        'username' => $user['username'],
-                        'email' => $user['email'],
-                        'role' => $user['role']
-                    ]
-                ];
+                return $user; // Return user data
             }
-            
-            return ['success' => false, 'message' => 'Invalid credentials'];
-            
+    
+            return null; // Password incorrect
         } catch (Exception $e) {
             error_log("Login error: " . $e->getMessage());
-            return ['success' => false, 'message' => 'Login failed. Please try again.'];
+            return null;
         }
-    }
+    }    
 
     private function sanitizeInput($data) {
         $data = trim($data);
