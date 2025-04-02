@@ -31,6 +31,8 @@ require_once '../config/database.php';
                     <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
                     <li class="nav-item"><a class="nav-link" href="#amenities">Amenities</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+        
                 </ul>
             </div>
         </div>
@@ -41,7 +43,7 @@ require_once '../config/database.php';
         <div class="container">
             <h1>Welcome to Airport Hotel</h1>
             <p>Your comfort is our priority</p>
-            <a href="src/views/guest/book_room.php" class="btn btn-warning">Book Room Now</a>
+            <a href="http://localhost/AirportHotel/public/guest_dashboard.php" class="btn btn-warning">Book Room Now</a>
         </div>
     </header>
 
